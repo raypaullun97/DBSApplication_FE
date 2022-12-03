@@ -1,18 +1,19 @@
 import React from 'react'
 import NavBar from "./NavBar"
 import "./Dashboard.css"
+import { Link } from "react-router-dom"
 
 const Dashboard = () => {
   return (
     <div>
         <NavBar/>
         <div className="divsize">
-            <button className="button1">
-                Testing
-            </button>
-            <button className="button2">
-                Testing
-            </button>
+            <Link to="/AccountBalance"><button className="button1">
+                Account Details
+            </button></Link>
+            <Link to="/ScheduleNewTransaction"><button className="button2">
+                Schedule New Transaction
+            </button></Link>
         </div>
     </div>
   )

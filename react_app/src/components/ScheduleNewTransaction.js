@@ -1,30 +1,63 @@
 import React from "react";
-import { auth } from "../firebase-config";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input-field";
 import NavigationBar from "./NavBar";
-import Transaction from "./Transactions/Transaction";
+import axios from "axios";
 
 const ScheduleNewTransaction = () => {
   // Using state to keep track of what the selected account number is
-  const [account, setAccount] = useState("");
+  const [accountType, setAccountType] = useState();
   const [amount, setAmount] = useState();
-  const [payTo, setPayTo] = useState("");
-  const [comments, setComments] = useState("");
-  const [newTransaction, setNewTransaction] = useState("");
+  const [payTo, setPayTo] = useState();
+  const [payeeAccount, setPayeeAccount] = useState();
+  const [comments, setComments] = useState("Bank transfer");
 
-  let accounts = [
-    { label: "Account 1", value: "Account 1" },
-    { label: "Account 2", value: "Account 2" },
-    { label: "Account 3", value: "Account 3" },
-  ];
+  // start: get accounts
+
+  // SENDER
+  // get UserID
+  let data1 = require("./User.json");
+
+  // const res = axios
+  // .post(url)
+  // .then((response) => {
+  //     console.log(response);
+  //     setData(response.data);
+  // })
+  // .catch((err) => {
+  //     console.log(err);
+  // });
+
+  let UserID = data1.filter(
+    (element) => element.Username === "ExecutiveDBS"
+  )[0]["UserID"];
+  //   console.log(UserID);
+
+  // get account types from user ID
+  let data2 = require("./test.json");
+
+  // const res = axios
+  // .post(url)
+  // .then((response) => {
+  //     console.log(response);
+  //     setData(response.data);
+  // })
+  // .catch((err) => {
+  //     console.log(err);
+  // });
+
+  let accountTypes = data2.filter((element) => element.UserID === UserID);
+  //   console.log(accountTypes);
+  //   console.log(accountTypes["AccountType"]);
+
+  // end: get accounts
 
   // Using this function to update the state of account
   // whenever a new option is selected from the dropdown
-  let handleAccountChange = (e) => {
+  let handleAccountTypeChange = (e) => {
     console.log(e.target.value);
-    setAccount(e.target.value);
+    setAccountType(e.target.value);
   };
 
   let handleAmountChange = (e) => {
@@ -41,6 +74,11 @@ const ScheduleNewTransaction = () => {
     setPayTo(e.target.value);
   };
 
+  let handlepayeeAcountChange = (e) => {
+    console.log(e.target.value);
+    setPayTo(e.target.value);
+  };
+
   let handleComments = (e) => {
     console.log(e.target.value);
     setComments(e.target.value);
@@ -48,33 +86,46 @@ const ScheduleNewTransaction = () => {
 
   const submitNewTransaction = async () => {
     console.log("submit");
+    console.log({
+      AccountID: accountType,
+      ReceivingAccountID: payTo,
+      Date: Date(),
+      TransactionAmount: parseFloat(amount),
+      Comment: comments,
+    });
     try {
       // set new transaction as json
-      setNewTransaction({
-        AccountID: account,
-        ReceivingAccountID: payTo,
-        Date: Date(),
-        TransactionAmount: parseFloat(amount),
-        Comment: comments,
-      });
-      console.log(newTransaction);
+      axios
+        .post("http://192.168.43.181:5000/addtransaction", {
+          AccountID: accountType,
+          ReceivingAccountID: payTo,
+          Date: Date(),
+          TransactionAmount: parseFloat(amount),
+          Comment: comments,
+        })
+        .then((response) => {
+          console.log(response);
+          // filterTransaction(credentials.custID);
+        });
     } catch (error) {}
   };
 
   return (
-    <div>
+    <div className="scheduleNewTransaction">
       {/* Displaying the account number */}
       {/*account*/}
       <NavigationBar />
       <h1>Schedule New Transaction</h1>
       <br />
-      <select onChange={handleAccountChange}>
+      <select onChange={handleAccountTypeChange}>
         <option value="Select Account"> -- Select an account -- </option>
-        {/* Mapping through each accounts object in our fruits array
+        {/* Mapping through each accountTypes object in our fruits array
           and returning an option element with the appropriate attributes / values.
          */}
-        {accounts.map((account) => (
-          <option value={account.value}>{account.label}</option>
+        {accountTypes.map((accountType) => (
+          <option value={accountType.AccountID}>
+            {accountType.AccountType + " " + accountType.AccountID}
+          </option>
         ))}
       </select>
       <input
