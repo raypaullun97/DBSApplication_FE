@@ -11,6 +11,7 @@ import TasksPage from "./components/TasksPage";
 import SignIn from "./components/SignIn";
 import Register from "./components/Register";
 import Home from "./components/Home";
+import AccountDetails from "./components/AccountDetails";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/" element={<SignIn />} />
           <Route path="/home" element={<Home/>} />
+          <Route path="/accountdetails" element={<AccountDetails/>} />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}

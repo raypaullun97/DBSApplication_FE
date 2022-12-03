@@ -4,13 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./SignIn2.css";
+import "./SignIn.css";
 import { Form, Container, Navbar } from 'react-bootstrap';
 import dbsLogo from "../images/DBS-logo.jpg"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 
-const BASE_URL = "http://172.20.10.2:5000"
+const BASE_URL = "http://172.20.10.2:8080"
 
 const SignIn = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -48,16 +48,16 @@ const SignIn = () => {
     if (!loginEmail || !loginPassword) {
       setLoginFailed(true)
     } else {
-      // const response = await axios.post((BASE_URL + '/account/login'), {
-      //   "credentials" : {
-      //     "username" : loginEmail,
-      //     "password" : loginPassword
-      //   }
-      // })
+      const response = await axios.post((BASE_URL + '/account/login'), {
+        "credentials" : {
+          "username" : loginEmail,
+          "password" : loginPassword
+        }
+      })
       setLoginFailed(false)
       navigate('/')
 
-      // console.log(response.data)
+      console.log(response.data)
     }
   }
 
