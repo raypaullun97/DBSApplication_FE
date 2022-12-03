@@ -8,7 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import TasksPage from "./components/TasksPage";
-import Login from "./components/SignIn";
+import SignIn from "./components/SignIn";
 import Register from "./components/Register";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path="/TasksPage" element={<TasksPage />} />
-          <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/" element={<Login />} />
+          <Route path="/TasksPage" element={<TasksPage />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/" element={<SignIn />} />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}
