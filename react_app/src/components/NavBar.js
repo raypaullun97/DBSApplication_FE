@@ -23,6 +23,9 @@ function NavigationBar() {
           <Nav.Link href="/" onClick={logout} className="navs">
             Logout
           </Nav.Link>
+          <Nav.Link href="/ScheduleNewTransaction" className="navs">
+            Schedule New Transaction
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
