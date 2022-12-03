@@ -4,11 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input-field";
 import NavigationBar from "./NavBar";
+import Transaction from "./Transactions/Transaction";
 
 const ScheduleNewTransaction = () => {
   // Using state to keep track of what the selected account number is
   const [account, setAccount] = useState("");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState();
   const [payTo, setPayTo] = useState("");
   const [comments, setComments] = useState("");
   const [newTransaction, setNewTransaction] = useState("");
@@ -48,6 +49,15 @@ const ScheduleNewTransaction = () => {
   const submitNewTransaction = async () => {
     console.log("submit");
     try {
+      // set new transaction as json
+      setNewTransaction({
+        AccountID: account,
+        ReceivingAccountID: payTo,
+        Date: Date(),
+        TransactionAmount: parseFloat(amount),
+        Comment: comments,
+      });
+      console.log(newTransaction);
     } catch (error) {}
   };
 
