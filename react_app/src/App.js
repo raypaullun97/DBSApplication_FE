@@ -8,11 +8,12 @@ import {
   Navigate,
 } from "react-router-dom";
 import TasksPage from "./components/TasksPage";
-import Login from "./components/SignIn";
+import SignIn from "./components/SignIn";
 import Register from "./components/Register";
 import Transactions from "./components/Transactions/Transactions";
 import ScheduleNewTransaction from "./components/ScheduleNewTransaction";
 import AccountBalance from "./components/AccountBalance";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
       <AccountBalance/>
       {/* <Router>
         <Routes>
+          <Route path="/TasksPage" element={<TasksPage />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/home" element={<Home/>} />
           <Route exact path="/TasksPage" element={<TasksPage />} />
           <Route exact path="/Register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
