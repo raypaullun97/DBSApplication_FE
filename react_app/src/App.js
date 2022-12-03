@@ -10,20 +10,22 @@ import {
 import TasksPage from "./components/TasksPage";
 import Login from "./components/SignIn";
 import Register from "./components/Register";
+import AccountBalance from "./components/AccountBalance";
 
 function App() {
   return (
     <>
-      <Router>
+    <AccountBalance/>
+      {/* <Router>
         <Routes>
           <Route exact path="/TasksPage" element={<TasksPage />} />
           <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/" element={<Login />} /> */}
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}
-        </Routes>
-      </Router>
+        {/* </Routes>
+      </Router> */}
     </>
   );
 }
