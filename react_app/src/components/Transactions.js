@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import NavBar from "./NavBar";
+import axios from "axios";
 
 const Transactions = (props) => {
+  const BASE_URL = "http://172.20.10.2:5000";
   const accountID = useParams();
-  const DeleteHandler = (event) => {
-    console.log(event.target.value);
+  const [errMsg, setErrMsg] = useState("");
+  const DeleteHandler = async (event) => {
     const ID = event.target.value;
     console.log(ID);
+    try {
+      const response = await axios.post(BASE_URL + "/deleteTransaction/", {
+        TransactionID: ID,
+      });
+    } catch (err) {
+      setErrMsg(err.message);
+    }
   };
   const transactionData = [
     {
@@ -32,8 +41,20 @@ const Transactions = (props) => {
     <div>
       <NavBar></NavBar>
       <h1>View Scheduled Transactions</h1>
-
-      <div>Account number:{accountID.id}</div>
+      {errMsg && (
+        <div
+          style={{
+            "background-color": "lightpink",
+            color: "firebrick",
+            "font-weight": "bold",
+            padding: "0.5rem",
+            "margin-bottom": "0.5rem",
+          }}
+        >
+          {errMsg}
+        </div>
+      )}
+      <h2>Account number:{accountID.id}</h2>
       <Table striped bordered hover style={{ color: "black" }}>
         <thead>
           <tr style={{ color: "black" }}>
@@ -56,9 +77,11 @@ const Transactions = (props) => {
                 {data.TransactionAmount}
               </td>
               <td>
+                {/* <a href={"/deleteTransaction/" + data.TransactionID}> */}
                 <button onClick={DeleteHandler} value={data.TransactionID}>
                   Delete
                 </button>
+                {/* </a> */}
               </td>
             </tr>
           ))}
