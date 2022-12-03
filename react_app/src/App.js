@@ -10,28 +10,39 @@ import {
 import TasksPage from "./components/TasksPage";
 import Login from "./components/SignIn";
 import Register from "./components/Register";
-import AccountBalance from "./components/AccountBalance";
+import Transactions from "./components/Transactions/Transactions";
 import ScheduleNewTransaction from "./components/ScheduleNewTransaction";
 
 function App() {
   return (
     <>
-    <AccountBalance/>
-      {/* <Router>
+      <Router>
         <Routes>
           <Route exact path="/TasksPage" element={<TasksPage />} />
           <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/" element={<Login />} /> */}
-          {/* <Route
+          <Route exact path="/" element={<Login />} />
+          <Route
             exact
             path="/ScheduleNewTransaction"
             element={<ScheduleNewTransaction />}
-          /> */}
+          />
+          <Route
+            exact
+            path="/Transactions"
+            element={
+              <Transactions
+                account={{ number: 123, type: "Savings" }}
+                transactions={[
+                  { id: 9, date: "1-1-22", destination: 234, amount: 5 },
+                ]}
+              />
+            }
+          />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}
-        {/* </Routes>
-      </Router> */}
+        </Routes>
+      </Router>
     </>
   );
 }
