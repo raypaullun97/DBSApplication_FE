@@ -4,13 +4,20 @@ import {useState, useEffect} from 'react'
 import NavBar from "./NavBar"
 import { Table } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { LinkContainer } from 'react-router-boostrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 
 const AccountBalance = () => {
 
+    function LinkFormatter(value, row, index) {
+        return "<a href='/'>"+value+"</a>";
+      }
+
     let data = require('./test.json') 
     // const [data, setData] = useState([]);
+    let test = data.find(el => el.AccountID == 958945214)
+    console.log(test["AccountType"])
 
     const fetchData = () => {
         // const res = axios
@@ -39,7 +46,7 @@ const AccountBalance = () => {
         {data.map((data) => (
             <tr style={{ color: "black" }}>
               <td>{data.AccountType}</td>
-              <td>{data.AccountID}</td>
+              <td><a href="/ScheduledTransactions/">{data.AccountID}</a></td>
               <td>{"$"}{data.AcccountBalance}</td>
             </tr>
           ))}
