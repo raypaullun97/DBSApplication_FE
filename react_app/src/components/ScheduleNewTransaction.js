@@ -2,8 +2,9 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input-field";
-import NavigationBar from "./NavBar";
+import NavBar from "./NavBar";
 import axios from "axios";
+import "./ScheduleNewTransaction.css";
 
 const ScheduleNewTransaction = () => {
   // Using state to keep track of what the selected account number is
@@ -18,16 +19,6 @@ const ScheduleNewTransaction = () => {
   // SENDER
   // get UserID
   let data1 = require("./User.json");
-
-  // const res = axios
-  // .post(url)
-  // .then((response) => {
-  //     console.log(response);
-  //     setData(response.data);
-  // })
-  // .catch((err) => {
-  //     console.log(err);
-  // });
 
   let UserID = data1.filter(
     (element) => element.Username === "ExecutiveDBS"
@@ -96,7 +87,7 @@ const ScheduleNewTransaction = () => {
     try {
       // set new transaction as json
       axios
-        .post("http://192.168.43.181:5000/addtransaction", {
+        .post("https://192.168.43.181:5000/addtransaction", {
           AccountID: accountType,
           ReceivingAccountID: payTo,
           Date: Date(),
@@ -111,42 +102,46 @@ const ScheduleNewTransaction = () => {
   };
 
   return (
-    <div className="scheduleNewTransaction">
+    <div>
       {/* Displaying the account number */}
       {/*account*/}
-      <NavigationBar />
+      <NavBar />
       <h1>Schedule New Transaction</h1>
       <br />
-      <select onChange={handleAccountTypeChange}>
-        <option value="Select Account"> -- Select an account -- </option>
-        {/* Mapping through each accountTypes object in our fruits array
+      <div className="scheduleNewTransaction">
+        <select onChange={handleAccountTypeChange}>
+          <option value="Select Account"> -- Select an account -- </option>
+          {/* Mapping through each accountTypes object in our fruits array
           and returning an option element with the appropriate attributes / values.
          */}
-        {accountTypes.map((accountType) => (
-          <option value={accountType.AccountID}>
-            {accountType.AccountType + " " + accountType.AccountID}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        placeholder="Amount"
-        value={amount}
-        onChange={handleAmountChange}
-      />
-      <input
-        type="text"
-        placeholder="Pay to"
-        value={payTo}
-        onChange={handlePayToChange} // value is going to change to whatever is typed in
-      />
-      <input
-        type="text"
-        placeholder="Comments (if any)"
-        value={comments}
-        onChange={handleComments} // value is going to change to whatever is typed in
-      />
-      <button onClick={submitNewTransaction}>Submit</button>
+          {accountTypes.map((accountType) => (
+            <option value={accountType.AccountID}>
+              {accountType.AccountType + " " + accountType.AccountID}
+            </option>
+          ))}
+        </select>
+        <input
+          type="text"
+          placeholder="Amount"
+          value={amount}
+          onChange={handleAmountChange}
+        />
+        <input
+          type="text"
+          placeholder="Pay to"
+          value={payTo}
+          onChange={handlePayToChange} // value is going to change to whatever is typed in
+        />
+        <input
+          type="text"
+          placeholder="Comments (if any)"
+          value={comments}
+          onChange={handleComments} // value is going to change to whatever is typed in
+        />
+        <button onClick={submitNewTransaction} className="submitFormButton">
+          Submit
+        </button>
+      </div>
     </div>
   );
 };
