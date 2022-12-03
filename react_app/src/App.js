@@ -8,7 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import TasksPage from "./components/TasksPage";
-import SignIn from "./components/SignIn";
+// import SignIn from "./components/SignIn";
 import Register from "./components/Register";
 import Transactions from "./components/Transactions/Transactions";
 import ScheduleNewTransaction from "./components/ScheduleNewTransaction";
