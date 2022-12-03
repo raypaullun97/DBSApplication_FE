@@ -13,6 +13,7 @@ import Register from "./components/Register";
 import ScheduleNewTransaction from "./components/ScheduleNewTransaction";
 import AccountBalance from "./components/AccountBalance";
 import Home from "./components/Home";
+import AccountDetails from "./components/AccountDetails";
 import SignIn from "./components/SignIn";
 import Dashboard from "./components/Dashboard";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/AccountBalance" element={<AccountBalance />} />
           <Route path="/" element={<SignIn />} />
           <Route path="/home" element={<Home/>} />
+          <Route path="/accountdetails" element={<AccountDetails/>} />
           <Route exact path="/TasksPage" element={<TasksPage />} />
           <Route exact path="/Register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
