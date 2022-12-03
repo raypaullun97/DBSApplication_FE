@@ -4,9 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavigationBar from "./NavBar";
 
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-
 const ScheduleNewTransaction = () => {
   // Using state to keep track of what the selected account number is
   const [account, setAccount] = useState("Account 1");
@@ -20,7 +17,7 @@ const ScheduleNewTransaction = () => {
 
   // Using this function to update the state of fruit
   // whenever a new option is selected from the dropdown
-  let handleFruitChange = (e) => {
+  let handleAccountChange = (e) => {
     setAccount(e.target.value);
   };
 
@@ -28,10 +25,11 @@ const ScheduleNewTransaction = () => {
     <div>
       {/* Displaying the value of fruit */}
       {/*account*/}
+      <NavigationBar />
+      <h1>Schedule New Transaction</h1>
       <br />
-
-      <select onChange={handleFruitChange}>
-        <option value="Select Account"> -- Select a fruit -- </option>
+      <select onChange={handleAccountChange}>
+        <option value="Select Account"> -- Select an account -- </option>
         {/* Mapping through each accounts object in our fruits array
           and returning an option element with the appropriate attributes / values.
          */}
