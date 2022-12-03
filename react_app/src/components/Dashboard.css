@@ -16,7 +16,7 @@
   line-height: 1.5rem;
   padding: 5rem;
   position: relative;
-  text-align: left;
+  text-align: center;
   transition: .2s;
   user-select: none;
   -webkit-user-select: none;
@@ -61,7 +61,7 @@
     line-height: 1.5rem;
     padding: 5rem;
     position: relative;
-    text-align: left;
+    text-align: center;
     transition: .2s;
     user-select: none;
     -webkit-user-select: none;

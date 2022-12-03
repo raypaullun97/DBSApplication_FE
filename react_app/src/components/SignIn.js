@@ -45,9 +45,7 @@ const SignIn = () => {
     console.log(loginEmail)
     console.log(loginPassword)
 
-    if (!loginEmail || !loginPassword) {
-      setLoginFailed(true)
-    } else {
+    
       const response = await axios.post((BASE_URL + '/account/login'), {
         "credentials" : {
           "username" : loginEmail,
@@ -58,7 +56,7 @@ const SignIn = () => {
       navigate('/Home')
 
       console.log(response.data)
-    }
+    
   }
 
   return (
@@ -94,11 +92,13 @@ const SignIn = () => {
               }}
             />
 
-            <Link>
-              <button className="signInButton button" onClick={signin}>
+            <Link to='/Home'>
+            <button className="signInButton button" onClick={signin}>
                 Sign In
               </button>
             </Link>
+              
+            
             <div>
               New user?
               <Link to="/Register" style={{ marginLeft: 5 }}>

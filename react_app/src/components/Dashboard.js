@@ -9,7 +9,7 @@ const Dashboard = () => {
         <NavBar/>
         <div className="divsize">
             <Link to="/AccountBalance"><button className="button1">
-                Account Details
+                Account Balance
             </button></Link>
             <Link to="/ScheduleNewTransaction"><button className="button2">
                 Schedule New Transaction

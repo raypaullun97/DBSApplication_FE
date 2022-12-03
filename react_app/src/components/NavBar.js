@@ -20,7 +20,7 @@ function NavigationBar() {
           <Nav.Link href="/home" className="navs">
             Home
           </Nav.Link>
-          <Nav.Link href="/accountbalance" className="navs">
+          <Nav.Link href="/accountdetails" className="navs">
             Account
           </Nav.Link>
           <Nav.Link href="/ScheduleNewTransaction" className="navs">

@@ -1,16 +1,17 @@
-import { Container, Table } from "react-bootstrap"
+import { Container, Navbar, Table } from "react-bootstrap"
 import React from "react";
 import { auth } from "../firebase-config";
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import NavBar from './NavBar';
 
 const BASE_URL = "http://192.168.43.181:5000";
 
 const AccountDetails = () => {
     const [details, setDetails] = useState('')
-    const [address, setAddress] = useState('')
-    const [email, setEmail] = useState('')
+    const [address, setAddress] = useState('Block 864 Hougang Avenue 8, #07-543')
+    const [email, setEmail] = useState('KevinLok@email.com')
 
     useEffect(() => {
         const fetchDetails = async () => {
@@ -25,13 +26,9 @@ const AccountDetails = () => {
     })
 
     const submitAddress = async () => {
-        let response = await axios.post((BASE_URL + "/account/update_details") , {
-            userID : 1,
-            address : address,
-            email : email
-        })
+        
 
-        alert("Details submitted")
+        alert("New Address: " + address + " ," + "New Email: " + email)
         console.log('submitted new details')
     }
 
@@ -51,6 +48,7 @@ const AccountDetails = () => {
 
     return (
         <React.Fragment>
+            <NavBar/>
             <div>
 
             </div>

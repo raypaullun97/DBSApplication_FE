@@ -28,6 +28,7 @@ function App() {
           <Route path="/home" element={<Dashboard />} />
           <Route path="/accountdetails" element={<AccountDetails />} />
           <Route exact path="/" element={<SignIn />} />
+          <Route path="/ScheduleNewTransactions" element={<ScheduleNewTransaction/>}/>
           <Route path="/ScheduledTransactions/:id" element={<Transactions />} />
           <Route
             path="ScheduleNewTransaction"
