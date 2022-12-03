@@ -27,7 +27,6 @@ function App() {
           <Route path="/AccountBalance" element={<AccountBalance />} />
           <Route path="/" element={<SignIn />} />
           <Route path="/Home" element={<Dashboard/>} />
-          <Route path="/home" element={<Home />} />
           <Route path="/ScheduledTransactions/:id" element={<Transactions />} />
         </Routes>
       </Router>
