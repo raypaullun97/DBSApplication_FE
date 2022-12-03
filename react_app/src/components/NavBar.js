@@ -17,8 +17,11 @@ function NavigationBar() {
       {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/" className="navs">
+          <Nav.Link href="/home" className="navs">
             Home
+          </Nav.Link>
+          <Nav.Link href="/accountbalance" className="navs">
+            Account
           </Nav.Link>
           <Nav.Link href="/ScheduleNewTransaction" className="navs">
             Schedule New Transaction

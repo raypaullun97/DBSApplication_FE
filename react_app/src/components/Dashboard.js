@@ -6,11 +6,11 @@ const Dashboard = () => {
   return (
     <div>
         <NavBar/>
-        <div className="pagesize">
+        <div className="divsize">
             <button className="button1">
                 Testing
             </button>
-            <button>
+            <button className="button2">
                 Testing
             </button>
         </div>
