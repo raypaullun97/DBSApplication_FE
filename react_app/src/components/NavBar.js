@@ -17,14 +17,14 @@ function NavigationBar() {
       {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/TasksPage" className="navs">
-            Tasks
-          </Nav.Link>
-          <Nav.Link href="/" onClick={logout} className="navs">
-            Logout
+          <Nav.Link href="/" className="navs">
+            Home
           </Nav.Link>
           <Nav.Link href="/ScheduleNewTransaction" className="navs">
             Schedule New Transaction
+          </Nav.Link>
+          <Nav.Link href="/" onClick={logout} className="navslogout">
+            Logout
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
