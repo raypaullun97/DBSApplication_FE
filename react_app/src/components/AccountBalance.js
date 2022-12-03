@@ -4,8 +4,25 @@ import {useState, useEffect} from 'react'
 import NavBar from "./NavBar"
 import { Table } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
+import { LinkContainer } from 'react-router-boostrap';
 
-function AccountBalance() {
+
+const AccountBalance = () => {
+
+    let data = require('./test.json') 
+    // const [data, setData] = useState([]);
+
+    const fetchData = () => {
+        // const res = axios
+        // .post(url)
+        // .then((response) => {
+        //     console.log(response);
+        //     setData(response.data);
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        // });
+    };
   return (
     <div style={{ color: "black" }}>
       <NavBar />
@@ -19,11 +36,13 @@ function AccountBalance() {
           </tr>
         </thead>
         <tbody>
-        <tr style={{ color: "white" }}>
-              <td>Account name</td>
-              <td>Account Type</td>
-              <td>$Amount</td>
+        {data.map((data) => (
+            <tr style={{ color: "black" }}>
+              <td>{data.AccountType}</td>
+              <td>{data.AccountID}</td>
+              <td>{"$"}{data.AcccountBalance}</td>
             </tr>
+          ))}
         </tbody>
       </Table>
     </div>
