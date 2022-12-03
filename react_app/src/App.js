@@ -10,7 +10,7 @@ import {
 import TasksPage from "./components/TasksPage";
 // import SignIn from "./components/SignIn";
 import Register from "./components/Register";
-import Transactions from "./components/Transactions/Transaction";
+import Transactions from "./components/Transactions";
 import ScheduleNewTransaction from "./components/ScheduleNewTransaction";
 import AccountBalance from "./components/AccountBalance";
 import Home from "./components/Home";
@@ -24,10 +24,12 @@ function App() {
         <Routes>
           <Route path="/TasksPage" element={<TasksPage />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/AccountBalance" element={<AccountBalance/>}/>
+          <Route path="/AccountBalance" element={<AccountBalance />} />
           <Route path="/" element={<SignIn />} />
           <Route path="/Home" element={<Dashboard/>} />
-         </Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/ScheduledTransactions/:id" element={<Transactions />} />
+        </Routes>
       </Router>
     </>
   );
