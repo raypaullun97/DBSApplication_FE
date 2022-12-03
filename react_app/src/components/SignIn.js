@@ -48,14 +48,16 @@ const SignIn = () => {
     if (!loginEmail || !loginPassword) {
       setLoginFailed(true)
     } else {
-      const response = await axios.post((BASE_URL + '/account/login'), {
-        "credentials" : {
-          "username" : loginEmail,
-          "password" : loginPassword
-        }
-      })
+      // const response = await axios.post((BASE_URL + '/account/login'), {
+      //   "credentials" : {
+      //     "username" : loginEmail,
+      //     "password" : loginPassword
+      //   }
+      // })
+      setLoginFailed(false)
+      navigate('/')
 
-      console.log(response.data)
+      // console.log(response.data)
     }
   }
 
