@@ -9,9 +9,9 @@ const Transactions = (props) => {
   const BASE_URL = "http://192.168.43.181:5000";
   const accountID = useParams().id;
   const [errMsg, setErrMsg] = useState("");
-  const [transactionData, setTransactionData] = useState([]);
-
-  const getTransactionData = async (event) => {
+  //const [transactionData, setTransactionData] = useState([]);
+  // comment out API integration
+  /* onst getTransactionData = async (event) => {
     try {
       const response = await axios.get(
         BASE_URL + "/transaction/" + "accountID:" + accountID
@@ -23,7 +23,7 @@ const Transactions = (props) => {
     } catch (err) {
       setErrMsg(err.message);
     }
-  };
+  }; */
   //console.log(getTransactionData());
   const DeleteHandler = async (event) => {
     const ID = event.target.value;
@@ -34,33 +34,45 @@ const Transactions = (props) => {
       setErrMsg(err.message);
     }
   };
-  console.log(transactionData);
-  useEffect(() => {
+
+  /* useEffect(() => {
     getTransactionData();
-  });
+  }); */
 
   useEffect(() => {
     setErrMsg("");
   }, []);
 
-  /* const transactionData = [
+  const transactionData = [
     {
-      TransactionID: 1,
       AccountID: 621156213,
-      ReceivingAccountID: 339657462,
+      Comment: "testing",
       Date: "2022-11-08T04:00:00.000Z",
-      TransactionAmount: 500.0,
-      Comment: "Monthly Pocket Money",
+      TransactionAmount: "200.00",
+      TransactionID: 6,
     },
     {
-      TransactionID: 2,
-      AccountID: 958945214,
-      ReceivingAccountID: 621156213,
+      AccountID: 621156213,
+      Comment: "testing2",
       Date: "2022-11-08T04:00:00.000Z",
-      TransactionAmount: 8996.0,
-      Comment: "School Fees",
+      TransactionAmount: "100.00",
+      TransactionID: 7,
     },
-  ]; */
+    {
+      AccountID: 621156213,
+      Comment: "testing3",
+      Date: "2022-11-08T04:00:00.000Z",
+      TransactionAmount: "600.00",
+      TransactionID: 8,
+    },
+    {
+      AccountID: 621156213,
+      Comment: "ffff",
+      Date: "2022-11-08T04:00:00.000Z",
+      TransactionAmount: "600.00",
+      TransactionID: 9,
+    },
+  ];
   return (
     <div>
       <NavBar></NavBar>
@@ -91,25 +103,24 @@ const Transactions = (props) => {
             </tr>
           </thead>
           <tbody>
-            {!transactionData &&
-              transactionData?.map((data) => (
-                <tr style={{ color: "black" }}>
-                  <td>{Date(data.Date).toString().slice(4, 24)}</td>
-                  <td>{data.ReceivingAccountID}</td>
-                  <td>{data.Comment}</td>
-                  <td>
-                    {"$"}
-                    {data.TransactionAmount}
-                  </td>
-                  <td>
-                    {/* <a href={"/deleteTransaction/" + data.TransactionID}> */}
-                    <button onClick={DeleteHandler} value={data.TransactionID}>
-                      Delete
-                    </button>
-                    {/* </a> */}
-                  </td>
-                </tr>
-              ))}
+            {transactionData.map((data) => (
+              <tr style={{ color: "black" }}>
+                <td>{Date(data.Date).toString().slice(4, 24)}</td>
+                <td>{data.ReceivingAccountID}</td>
+                <td>{data.Comment}</td>
+                <td>
+                  {"$"}
+                  {data.TransactionAmount}
+                </td>
+                <td>
+                  {/* <a href={"/deleteTransaction/" + data.TransactionID}> */}
+                  <button onClick={DeleteHandler} value={data.TransactionID}>
+                    Delete
+                  </button>
+                  {/* </a> */}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
