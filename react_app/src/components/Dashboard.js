@@ -6,8 +6,8 @@ const Dashboard = () => {
   return (
     <div>
         <NavBar/>
-        <div>
-            <button classname="button1">
+        <div className="pagesize">
+            <button className="button1">
                 Testing
             </button>
             <button>

@@ -55,7 +55,7 @@ const SignIn = () => {
       //   }
       // })
       setLoginFailed(false)
-      navigate('/')
+      navigate('/Home')
 
       // console.log(response.data)
     }
