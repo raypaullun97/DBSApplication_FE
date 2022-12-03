@@ -20,41 +20,15 @@ import Dashboard from "./components/Dashboard";
 function App() {
   return (
     <>
-      <AccountBalance />
-      <ScheduleNewTransaction />
-      {/* <Router>
+      <Router>
         <Routes>
-          <Route path="/TasksPage" element={<TasksPage />} />
-          <Route path="/Register" element={<Register />} />
           <Route path="/AccountBalance" element={<AccountBalance />} />
           <Route path="/" element={<SignIn />} />
-          <Route path="/home" element={<Home/>} />
+          <Route path="/home" element={<Dashboard/>} />
           <Route path="/accountdetails" element={<AccountDetails/>} />
-          <Route exact path="/TasksPage" element={<TasksPage />} />
-          <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/" element={<Login />} />
-          <Route
-            exact
-            path="/ScheduleNewTransaction"
-            element={<ScheduleNewTransaction />}
-          />
-          <Route
-            exact
-            path="/Transactions"
-            element={
-              <Transactions
-                account={{ number: 123, type: "Savings" }}
-                transactions={[
-                  { id: 9, date: "1-1-22", destination: 234, amount: 5 },
-                ]}
-              />
-            } */}
-      {/* /> */}
-      {/* If any route mismatches the upper 
-          route endpoints then, redirect triggers 
-          and redirects app to home component with to="/" */}
-      {/* </Routes>
-      </Router> */}
+          <Route exact path="/" element={<SignIn />} />
+        </Routes>
+      </Router> 
     </>
   );
 }

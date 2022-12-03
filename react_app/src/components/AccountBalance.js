@@ -6,8 +6,6 @@ import { Table } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { LinkContainer } from 'react-router-bootstrap';
 
-
-
 const AccountBalance = () => {
 
     let data = require('./test.json') 
