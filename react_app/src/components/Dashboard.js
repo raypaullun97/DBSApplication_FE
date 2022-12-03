@@ -11,7 +11,7 @@ const Dashboard = () => {
             <Link to="/AccountBalance"><button className="button1">
                 Account Details
             </button></Link>
-            <Link to="ScheduleNewTransaction"><button className="button2">
+            <Link to="/ScheduleNewTransaction"><button className="button2">
                 Schedule New Transaction
             </button></Link>
         </div>
