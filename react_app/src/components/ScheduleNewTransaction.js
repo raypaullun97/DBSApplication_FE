@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input-field";
 import NavigationBar from "./NavBar";
+import axios from "axios";
 
 const ScheduleNewTransaction = () => {
   // Using state to keep track of what the selected account number is
@@ -85,20 +86,32 @@ const ScheduleNewTransaction = () => {
 
   const submitNewTransaction = async () => {
     console.log("submit");
+    console.log({
+      AccountID: accountType,
+      ReceivingAccountID: payTo,
+      Date: Date(),
+      TransactionAmount: parseFloat(amount),
+      Comment: comments,
+    });
     try {
       // set new transaction as json
-      console.log({
-        AccountID: accountType,
-        ReceivingAccountID: payTo,
-        Date: Date(),
-        TransactionAmount: parseFloat(amount),
-        Comment: comments,
-      });
+      axios
+        .post("http://192.168.43.181:5000/addtransaction", {
+          AccountID: accountType,
+          ReceivingAccountID: payTo,
+          Date: Date(),
+          TransactionAmount: parseFloat(amount),
+          Comment: comments,
+        })
+        .then((response) => {
+          console.log(response);
+          // filterTransaction(credentials.custID);
+        });
     } catch (error) {}
   };
 
   return (
-    <div>
+    <div className="scheduleNewTransaction">
       {/* Displaying the account number */}
       {/*account*/}
       <NavigationBar />
